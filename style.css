@@ -1,0 +1,283 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    width: 100%;
+}
+
+body {
+    background-image: url(img/bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+main {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.txt-modal {
+    position: fixed;
+    margin: auto;
+    inset: 0;
+    padding: 20px;
+    border: 1px solid rgba(230, 227, 186, 0.15);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px) saturate(120%);
+    -webkit-backdrop-filter: blur(3px) saturate(120%);
+}
+
+.txt-modal::backdrop {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.txt-modal__conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.txt-modal h1 {
+    width: 100%;
+    max-width: 680px;
+    height: auto;
+    text-align: center;
+    font-family: "Cormorant SC", serif;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.txt-modal p {
+    width: 100%;
+    max-width: 680px;
+    height: auto;
+    text-align: center;
+    font-family: "Cormorant SC", serif;
+    font-weight: 400;
+}
+
+.txt-modal button {
+    width: 80px;
+    height: 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: #55504D;
+    font-family: "Cormorant SC", serif;
+    font-weight: 300;
+    color: rgb(238, 236, 229);
+    cursor: pointer;
+    transition: background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.txt-modal button:hover {
+    box-shadow: 0 0 0 3px #3d4d5d60;
+    background-color: #0c121c;
+}
+
+.txt-modal button:active {
+    animation: fechar 0.5s;
+}
+
+.txt-modal button:focus-visible {
+    outline: 2px solid #55504D;
+    outline-offset: 3px;
+}
+
+@keyframes fechar {
+
+    0%,
+    100% {
+        transform: scale(1, 1);
+    }
+
+    25% {
+        transform: scale(0.9, 1.1);
+    }
+
+    50% {
+        transform: scale(1.1, 0.9);
+    }
+
+    75% {
+        transform: scale(0.95, 1.05);
+    }
+}
+
+.reactive {
+    position: absolute;
+    width: min(45vw, 320px);
+    height: min(45vh, 320px);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    z-index: 1;
+}
+
+.reactive:active {
+    cursor: grabbing;
+}
+
+.golem-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    transform-origin: 50% 85%;
+    will-change: transform;
+}
+
+.golem-svg.terremoto {
+    animation: terremoto 1.4s ease-out;
+    transform-origin: 50% 85%;
+}
+
+@keyframes terremoto {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    8% {
+        transform: translate(-5px, 1px) rotate(-2deg) scale(1.01);
+    }
+
+    16% {
+        transform: translate(5px, -1px) rotate(2.5deg) scale(0.99);
+    }
+
+    25% {
+        transform: translate(-4px, 0) rotate(-2deg);
+    }
+
+    35% {
+        transform: translate(4px, 0) rotate(1.8deg);
+    }
+
+    47% {
+        transform: translate(-3px, 0) rotate(-1.4deg);
+    }
+
+    60% {
+        transform: translate(3px, 0) rotate(1deg);
+    }
+
+    72% {
+        transform: translate(-2px, 0) rotate(-0.7deg);
+    }
+
+    84% {
+        transform: translate(1px, 0) rotate(0.4deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+}
+
+@media (max-width: 600px) {
+    .reactive {
+        width: min(85vw, 420px);
+        height: min(65vh, 420px);
+    }
+
+    .txt-modal {
+        padding: 16px;
+    }
+
+    .txt-modal h1 {
+        font-size: 1.5rem;
+    }
+
+    .txt-modal p {
+        font-size: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .txt-modal button {
+        transition: none;
+    }
+
+    .txt-modal button:active {
+        animation: none;
+    }
+
+    .golem-svg.terremoto {
+        animation-duration: 0.01ms;
+    }
+}
+
+.folhas {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.folha {
+    position: absolute;
+    top: -10%;
+    width: var(--tamanho);
+    height: var(--tamanho);
+    opacity: 0;
+    animation: folha-caindo var(--duracao) linear infinite;
+    animation-delay: var(--atraso);
+}
+
+.folha img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@keyframes folha-caindo {
+    0% {
+        transform: translate3d(0, -5vh, 0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.85;
+    }
+
+    30% {
+        transform: translate3d(35px, 30vh, 0) rotate(100deg);
+    }
+
+    60% {
+        transform: translate3d(-25px, 65vh, 0) rotate(220deg);
+    }
+
+    90% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translate3d(30px, 115vh, 0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .folhas {
+        display: none;
+    }
+}
