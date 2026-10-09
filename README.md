@@ -4,7 +4,7 @@
 
 # Reactive Golem — Interactive Character
 
-Um personagem interativo inspirado no estilo LEGO, ambientado em um cenário ilustrado de floresta. Explore suas animações e interaja com o golem por meio de cliques e movimentos do mouse.
+Um personagem interativo inspirado no estilo LEGO, ambientado em um cenário ilustrado de floresta. Acione suas animações e interaja com o golem por meio de cliques e movimentos na tela.
 
 ## Prévia
 
@@ -12,7 +12,7 @@ Um personagem interativo inspirado no estilo LEGO, ambientado em um cenário ilu
 
 ## Características
 
-<p align="center">
+<p align="left">
   <img src="https://img.shields.io/badge/Interactive-8A9A5B?style=flat" />
   <img src="https://img.shields.io/badge/Drag%20and%20Drop-C4A484?style=flat" />
   <img src="https://img.shields.io/badge/Animated-8A9A5B?style=flat" />
